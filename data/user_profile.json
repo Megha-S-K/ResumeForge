@@ -1,0 +1,113 @@
+{
+  "personal": {
+    "name": "Megha S.K",
+    "email": "meghask2303@gmail.com",
+    "phone": "+917639088716",
+    "linkedin": "https://www.linkedin.com/in/megha-s-k-b5225b257/",
+    "location": "Trichy",
+    "summary": "Curious and motivated B.Tech IT student with a strong interest in software development and\n artificial intelligence. Skilled in programming with Java, Python, and web technologies, with a\n passion for solving real-world problems through innovative solutions. Eager to gain hands-on\n experience in AI, data science, and software engineering projects. Strong analytical mindset\n with quick learning ability, adaptability, and teamwork skills. Seeking an opportunity to apply\n my technical knowledge and grow as a technology professional.\n"
+  },
+  "experience": [],
+  "projects": [
+    {
+      "name": "Cold email Generator",
+      "description": " Developed an AI-powered cold email generator using LLaMA 3.3, LangChain, ChromaDB,\n and Streamlit to help software service companies automate and personalize B2B\n outreach. The tool extracts job requirements from postings, matches them with relevant\n internal project portfolios using vector search, and generates tailored emails highlighting\n key expertise",
+      "tech_stack": [
+        "Langchain",
+        "streamlit",
+        "ChromaDB",
+        "LLaMA model"
+      ],
+      "github": "https://github.com/Megha-S-K/cold_email_generator.git"
+    },
+    {
+      "name": "Book store",
+      "description": "  Developed a full-stack Bookstore web application with interactive UI features for adding,\n editing, and updating products. Utilized Vue.js and React for the frontend, Node.js for the\n backend, and MongoDB as the database. Integrated RESTful APIs tested using Postman\n and deployed the application on Render for live access. The project showcases seamless\n user experience, responsive design, and effective CRUD operations.",
+      "tech_stack": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Postman",
+        "Express"
+      ],
+      "github": "https://github.com/Megha-S-K/book-store.git"
+    },
+    {
+      "name": " Fit Recommendation System",
+      "description": "   Developed an AI-powered Fit Recommendation System that estimates waist and hip\n measurements from user images using MediaPipe for pose estimation. Processed body\n landmarks to generate accurate measurements and map them to brand-specific sizing\n charts. Integrated computer vision and real-time AI inference for practical use in e\ncommerce and fashion.",
+      "tech_stack": [
+        "Google colab",
+        "openCV"
+      ],
+      "github": "https://github.com/Megha-S-K/Fit_Recommendation.git"
+    },
+    {
+      "name": "Speak Genie",
+      "description": " Developed a AI assistant for improvising children learning and understanding ability, implemented voice agents and various interactive mode (teacher, genie and friend) for better understanding",
+      "tech_stack": [
+        "ElevenLabs voice agent",
+        "ollama",
+        "groq"
+      ],
+      "github": "https://github.com/Megha-S-K/SpeakGenie"
+    },
+    {
+      "name": "Snake and Ladder",
+      "description": " Developed a coding based application to understand DSA concepts and web working in detail",
+      "tech_stack": [
+        "java"
+      ],
+      "github": "https://github.com/Megha-S-K/SnakeAndLadder_java"
+    },
+    {
+      "name": "Solar prediction",
+      "description": " Created a AI/ML model to understand and predict the power output from solar cells using real time industrial data and the relevant locations weather data, did data cleaning, preprocessing, Analysis, model training , testing and ready for deployment",
+      "tech_stack": [
+        "Google colab",
+        "numpy",
+        "hugging face",
+        "pandas",
+        "seaborn"
+      ],
+      "github": "https://github.com/Megha-S-K/solar-data-automation"
+    }
+  ],
+  "skills": {
+    "technical": [
+      "python",
+      "java",
+      "javascript",
+      "html",
+      "css",
+      "javascript",
+      "AI agents",
+      "hugging face models",
+      "langchain",
+      "MongoDB",
+      "React",
+      "Express",
+      "Node.js"
+    ],
+    "soft": [
+      "Leadership",
+      "communication",
+      "empathy"
+    ]
+  },
+  "education": [
+    {
+      "degree": "B.Tech IT",
+      "institution": "SAranathan college of engineering",
+      "year": "2026",
+      "gpa": "8.7/10"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Azure fundamentals",
+      "issuer": "Microsoft",
+      "year": "2025"
+    }
+  ],
+  "last_updated": "2025-10-02 10:16:37"
+}
