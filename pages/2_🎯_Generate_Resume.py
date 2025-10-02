@@ -36,9 +36,11 @@ st.write("---")
 # Job Description Input
 st.header("📋 Step 1: Input Job Description")
 
-tab1, tab2 = st.tabs(["🔗 Paste URL", "📝 Paste Text"])
+# Initialize session state for JD text
+if 'jd_text' not in st.session_state:
+    st.session_state.jd_text = ""
 
-jd_text = ""
+tab1, tab2 = st.tabs(["🔗 Paste URL", "📝 Paste Text"])
 
 with tab1:
     st.write("**Paste a job posting URL (LinkedIn, Indeed, company website, etc.)**")
@@ -50,14 +52,23 @@ with tab1:
         
         if success:
             st.success("✅ Job description extracted successfully!")
-            jd_text = st.text_area("Extracted Content (you can edit):", value=extracted_text, height=300)
+            # Save to session state
+            st.session_state.jd_text = extracted_text
+            
+            # Show extracted content (view only; edit in other tab)
+            st.text_area("Extracted Content:", value=st.session_state.jd_text, height=300, disabled=True)
+            
+            st.info("👉 The extracted text is ready! Click 'Generate Resume' below or switch to the 'Paste Text' tab to edit it.")
         else:
             st.error(f"❌ {error}")
             st.info("👇 Try pasting the text directly in the 'Paste Text' tab instead.")
 
 with tab2:
     st.write("**Copy and paste the complete job description:**")
-    jd_text = st.text_area("Job Description:", height=300, placeholder="Paste the entire job posting here...")
+    st.text_area("Job Description:", height=300, key="jd_text")
+
+# Get the current JD text after tabs
+jd_text = st.session_state.jd_text
 
 # Generate Resume Button
 if jd_text and len(jd_text) > 100:
