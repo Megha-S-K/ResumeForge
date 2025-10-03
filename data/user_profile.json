@@ -86,7 +86,22 @@
       "MongoDB",
       "React",
       "Express",
-      "Node.js"
+      "Node.js",
+      "ide knowledge",
+      "c++",
+      "communication skills",
+      "logical thinking",
+      "oops concepts",
+      "Agile Methodologies",
+      "Containerization (Docker)",
+      "DevOps Tools (Jenkins, Ansible)",
+      "Networking Fundamentals",
+      "Kubernetes",
+      "Machine Learning (ML) or Artificial Intelligence (AI)",
+      "continuous learner",
+      "c",
+      "git",
+      "SQL and Database Management (e.g., MySQL, MongoDB)"
     ],
     "soft": [
       "Leadership",
@@ -109,5 +124,5 @@
       "year": "2025"
     }
   ],
-  "last_updated": "2025-10-02 20:17:34"
+  "last_updated": "2025-10-03 16:07:58"
 }
