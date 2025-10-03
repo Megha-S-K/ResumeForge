@@ -279,7 +279,7 @@ if st.session_state.generated and st.session_state.jd_analysis:
                     json.dump(profile, f, indent=2)
                 
                 st.success(f"✅ Profile updated! Added {added_count} new skill(s).")
-                st.balloons()
+                #st.balloons()
                 
                 # Clear selections (but keep generated state)
                 st.session_state.selected_skills = set()
@@ -354,33 +354,96 @@ if st.session_state.generated and st.session_state.jd_analysis:
     jd_keywords = jd_analysis.get('keywords', []) + jd_analysis.get('required_skills', [])
     optimized_experiences = optimize_experience_bullets(profile.get('experience', []), jd_keywords, max_bullets=3)
     
-    # Generate DOCX
-    st.header("📥 Download Your Resume")
-    
-    # Import the builder
+    # Generate Resume
+    st.write("---")
+    st.header("📥 Your Beautiful Resume")
+        
+    # Import builders
     from utils.docx_builder import create_resume_docx
-    
-    with st.spinner("📝 Creating your resume document..."):
-        resume_file = create_resume_docx(profile, jd_analysis, tailored_summary, match_details, selected_projects, optimized_experiences)
-    
-    # Company name for filename
-    company_name = jd_analysis.get('role_type', 'job').replace(' ', '_')
-    filename = f"resume_{company_name}_{profile['personal']['name'].replace(' ', '_')}.docx"
-    
-    # Centered Download Button
-    col_dl1, col_dl2, col_dl3 = st.columns([1, 2, 1])
-    with col_dl2:
-        st.download_button(
-            label="📥 Download Resume (DOCX)",
-            data=resume_file,
-            file_name=filename,
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            use_container_width=True,
-            type="primary"
+    from utils.html_resume_builder import create_html_resume, html_to_pdf
+    from utils.ai_analyzer import select_best_projects, optimize_experience_bullets
+        
+    with st.spinner("✨ Creating your stunning resume..."):
+        # Select best projects
+        selected_projects = select_best_projects(profile, jd_analysis, max_projects=3)
+            
+        # Optimize experience bullets
+        jd_keywords = jd_analysis.get('keywords', [])
+        optimized_experiences = optimize_experience_bullets(
+            profile.get('experience', []), 
+            jd_keywords, 
+            max_bullets=3
         )
-    
-    st.success("🎉 Your tailored resume is ready! Click above to download.")
-    st.balloons()
+            
+        # Create HTML resume
+        html_resume = create_html_resume(
+            profile, 
+            jd_analysis, 
+            tailored_summary, 
+            match_details,
+            selected_projects,
+            optimized_experiences
+        )
+        
+        st.success("✅ Resume generated successfully!")
+        
+        # Preview Section
+        st.subheader("📄 Live Preview")
+        st.info("👀 This is how your resume will look:")
+        
+        # Show HTML preview in iframe
+        import base64
+        b64_html = base64.b64encode(html_resume.encode()).decode()
+        iframe_html = f'<iframe src="data:text/html;base64,{b64_html}" width="100%" height="800px" style="border: 2px solid #667eea; border-radius: 10px;"></iframe>'
+        st.components.v1.html(iframe_html, height=820, scrolling=True)
+        
+        # Download Buttons
+        st.write("---")
+        st.subheader("💾 Download Options")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            # PDF Download
+            with st.spinner("📄 Generating PDF..."):
+                pdf_file = html_to_pdf(html_resume)
+            
+            if pdf_file:
+                company_name = jd_analysis.get('role_type', 'job').replace(' ', '_')
+                pdf_filename = f"resume_{company_name}_{profile['personal']['name'].replace(' ', '_')}.pdf"
+                
+                st.download_button(
+                    label="📄 Download Beautiful PDF",
+                    data=pdf_file,
+                    file_name=pdf_filename,
+                    mime="application/pdf",
+                    use_container_width=True,
+                    type="primary"
+                )
+            else:
+                st.error("PDF generation failed. Please try DOCX format.")
+        
+        with col2:
+            # DOCX Download (backup option)
+            with st.spinner("📝 Generating DOCX..."):
+                docx_file = create_resume_docx(
+                    profile, jd_analysis, tailored_summary, match_details,
+                    selected_projects, optimized_experiences
+                )
+            
+            company_name = jd_analysis.get('role_type', 'job').replace(' ', '_')
+            docx_filename = f"resume_{company_name}_{profile['personal']['name'].replace(' ', '_')}.docx"
+            
+            st.download_button(
+                label="📝 Download Plain DOCX",
+                data=docx_file,
+                file_name=docx_filename,
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                use_container_width=True
+            )
+        
+        st.balloons()
+        st.success("🎉 Your tailored resume is ready! Choose your preferred format above.")
 
 else:
-    st.info("👆 Paste a job URL or description above to get started")
+    st.info("👆 Paste a job URL or description above to get started!")
