@@ -1,12 +1,61 @@
+import json
+import os
+from datetime import datetime
 import streamlit as st
 import json
 import os
 from datetime import datetime
+from style import local_css, inject_custom_components
+#from sidebar_nav import render_sidebar, show_profile_status
 
-st.set_page_config(page_title="Profile Builder", page_icon="📝", layout="wide")
 
-st.title("📝 Build Your Complete Profile")
-st.write("Your information is automatically saved as you type! ✨")
+# Page configuration
+st.set_page_config(
+    page_title="Build Profile - ResumeForge AI",
+    page_icon="📝",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Load custom CSS
+local_css("style.css")
+inject_custom_components()
+
+# Page header
+st.markdown("""
+    <div style="text-align: center; margin: 1rem 0;">
+        <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">📝</div>
+    </div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <h1 style="
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+    ">
+        Build Your Complete Profile
+    </h1>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <p style="
+        text-align: center;
+        font-size: 1.125rem;
+        color: #94a3b8;
+        margin-bottom: 2rem;
+    ">
+        Your information is automatically saved as you type! ✨
+    </p>
+""", unsafe_allow_html=True)
+
+st.markdown("---")
 
 # Create data folder
 if not os.path.exists('data'):
@@ -52,16 +101,16 @@ st.header("👤 Personal Information")
 col1, col2 = st.columns(2)
 with col1:
     name = st.text_input("Full Name *", 
-                         value=st.session_state.profile_data.get('personal', {}).get('name', ''),
-                         key="name_input")
+                        value=st.session_state.profile_data.get('personal', {}).get('name', ''),
+                        key="name_input")
     email = st.text_input("Email *", 
-                          value=st.session_state.profile_data.get('personal', {}).get('email', ''),
-                          key="email_input")
+                        value=st.session_state.profile_data.get('personal', {}).get('email', ''),
+                        key="email_input")
 
 with col2:
     phone = st.text_input("Phone", 
-                          value=st.session_state.profile_data.get('personal', {}).get('phone', ''),
-                          key="phone_input")
+                        value=st.session_state.profile_data.get('personal', {}).get('phone', ''),
+                        key="phone_input")
     linkedin = st.text_input("LinkedIn", 
                              value=st.session_state.profile_data.get('personal', {}).get('linkedin', ''),
                              key="linkedin_input")
@@ -446,3 +495,5 @@ with st.expander("🗑️ Clear All Data", expanded=False):
             
             st.success("✅ All data cleared!")
             st.rerun()
+if st.button("Add Job description", type="primary", use_container_width=True, key="generate_btn"):
+    st.switch_page("pages/2_🎯_Generate_Resume.py")

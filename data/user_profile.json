@@ -80,41 +80,7 @@
       "html",
       "css",
       "javascript",
-      "AI agents",
-      "hugging face models",
-      "langchain",
-      "MongoDB",
-      "React",
-      "Express",
-      "Node.js",
-      "ide knowledge",
-      "c++",
-      "communication skills",
-      "logical thinking",
-      "oops concepts",
-      "Agile Methodologies",
-      "Containerization (Docker)",
-      "DevOps Tools (Jenkins",
-      "Ansible)",
-      "Networking Fundamentals",
-      "Kubernetes",
-      "Machine Learning (ML) or Artificial Intelligence (AI)",
-      "continuous learner",
-      "c",
-      "git",
-      "SQL and Database Management (e.g.",
-      "MySQL",
-      "MongoDB)",
-      "AWS (Amazon Web Services)",
-      "engineer",
-      "Cloud Computing (e.g.",
-      "Azure",
-      "Google Cloud)",
-      "Machine Learning Frameworks (e.g.",
-      "TensorFlow",
-      "PyTorch)",
-      "hr",
-      "executive"
+      "oops concepts"
     ],
     "soft": [
       "Leadership",
@@ -135,7 +101,12 @@
       "name": "Azure fundamentals",
       "issuer": "Microsoft",
       "year": "2025"
+    },
+    {
+      "name": "UI/UX",
+      "issuer": "Udemy",
+      "year": "2022"
     }
   ],
-  "last_updated": "2025-10-03 23:44:37"
+  "last_updated": "2025-10-04 19:54:20"
 }

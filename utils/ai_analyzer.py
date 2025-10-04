@@ -124,9 +124,8 @@ Return as a JSON array of strings (skill names only)."""
         'ai_suggestions': ai_suggestions[:5],
         'has_recommendations': len(critical_missing) > 0 or len(nice_missing) > 0
     }
-
 def generate_tailored_summary(user_profile, jd_analysis):
-    """Generate professional summary tailored to the job"""
+    """Generate professional summary tailored to the job, returning only the summary text."""
     try:
         client = get_cerebras_client()
         
@@ -140,7 +139,6 @@ def generate_tailored_summary(user_profile, jd_analysis):
         
         if is_fresher:
             prompt = f"""Write a professional summary for a FRESHER/RECENT GRADUATE resume (2-3 sentences, max 80 words).
-
 Education: {user_profile.get('education', [{}])[0].get('degree', 'Computer Science') if user_profile.get('education') else 'Computer Science'}
 Skills: {', '.join(user_skills.get('technical', [])[:10])}
 Target Role: {role_type}
@@ -152,30 +150,38 @@ Focus on:
 - Relevant technical skills
 - Career aspirations aligned with the role
 
-Make it compelling and confident but appropriate for entry-level."""
+Respond ONLY with the professional summary text. Do NOT include any explanations or quotes."""
         else:
             prompt = f"""Write a professional summary for an EXPERIENCED PROFESSIONAL resume (2-3 sentences, max 80 words).
-
 Current Summary: {user_summary}
 Skills: {', '.join(user_skills.get('technical', [])[:10])}
 Target Role: {role_type}
 Key Required Skills: {required_skills}
 
-Make it compelling and highlight relevant experience. Focus on achievements and impact."""
+Make it compelling and highlight relevant experience. Focus on achievements and impact.
 
+Respond ONLY with the professional summary text. Do NOT include any explanations or quotes."""
+        
         response = client.chat.completions.create(
             model="llama3.1-8b",
             messages=[
-                {"role": "system", "content": "You are a professional resume writer."},
+                {"role": "system", "content": "You are a professional resume writer. Provide ONLY the professional summary text, no extra commentary."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.3,
             max_tokens=150
         )
         
-        return response.choices[0].message.content.strip()
+        summary_text = response.choices[0].message.content.strip()
+        
+        # Optional: Remove surrounding quotes if model adds them
+        if summary_text.startswith('"') and summary_text.endswith('"'):
+            summary_text = summary_text[1:-1].strip()
+        
+        return summary_text
         
     except Exception as e:
+        # Fallback to existing summary if error occurs
         return user_profile.get('personal', {}).get('summary', '')
 
 def calculate_match_score(user_profile, jd_analysis):

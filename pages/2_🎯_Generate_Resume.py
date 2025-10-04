@@ -1,4 +1,3 @@
-import streamlit as st
 import json
 import os
 import sys
@@ -9,11 +8,67 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from utils.url_extractor import extract_from_url
 from utils.ai_analyzer import analyze_job_description, generate_tailored_summary, calculate_match_score
 
-st.set_page_config(page_title="Generate Resume", page_icon="🎯", layout="wide")
+# NEW CODE (Add these imports):
+import json
+import os
+import sys
+import streamlit as st
+from style import local_css, inject_custom_components
+#from sidebar_nav import render_sidebar, show_profile_status
 
-st.title("🎯 Generate Tailored Resume")
-st.write("Paste a job URL or description, and watch AI create a perfectly tailored resume!")
+# Add utils to path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+from utils.url_extractor import extract_from_url
+from utils.ai_analyzer import analyze_job_description, generate_tailored_summary, calculate_match_score
+
+# Page configuration
+st.set_page_config(
+    page_title="Generate Resume - ResumeForge AI",
+    page_icon="🎯",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Load custom CSS
+local_css("style.css")
+inject_custom_components()
+
+# Page header
+st.markdown("""
+    <div style="text-align: center; ">
+        <div style="font-size: 3.5rem;">🎯</div>
+    </div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <h1 style="
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+    ">
+        Generate Tailored Resume
+    </h1>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <p style="
+        text-align: center;
+        font-size: 1.125rem;
+        color: #94a3b8;
+        margin-bottom: 2rem;
+    ">
+        Paste a job URL or description, and watch AI create a perfectly tailored resume! 🚀
+    </p>
+""", unsafe_allow_html=True)
+
+st.markdown("---")
 # Check if profile exists
 def load_profile():
     try:
@@ -54,11 +109,7 @@ with tab1:
             st.success("✅ Job description extracted successfully!")
             # Save to session state
             st.session_state.jd_text = extracted_text
-            
-            # Show extracted content (view only; edit in other tab)
-            st.text_area("Extracted Content:", value=st.session_state.jd_text, height=300, disabled=True)
-            
-            st.info("👉 The extracted text is ready! Click 'Generate Resume' below or switch to the 'Paste Text' tab to edit it.")
+
         else:
             st.error(f"❌ {error}")
             st.info("👇 Try pasting the text directly in the 'Paste Text' tab instead.")
@@ -66,6 +117,9 @@ with tab1:
 with tab2:
     st.write("**Copy and paste the complete job description:**")
     st.text_area("Job Description:", height=300, key="jd_text")
+
+if st.button("Extract Job Description ", use_container_width=True, key="nav_generate"):
+        st.session_state.generated = False
 
 # Get the current JD text after tabs
 jd_text = st.session_state.jd_text
@@ -87,7 +141,7 @@ if 'tailored_summary' not in st.session_state:
 # Generate Resume Button (only active if not generated or after clear)
 if jd_text and len(jd_text) > 100:
     st.write("---")
-    
+
     col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
     with col_btn2:
         if st.button("🚀 Generate Tailored Resume", type="primary", use_container_width=True, disabled=st.session_state.generated):
@@ -103,7 +157,6 @@ if jd_text and len(jd_text) > 100:
                 st.stop()
             
             st.session_state.jd_analysis = analysis_result['data']
-            st.success("✅ Job analysis complete!")
             
             # Calculate Match Score
             with st.spinner("🎯 Calculating your match score..."):
@@ -150,7 +203,7 @@ if st.session_state.generated and st.session_state.jd_analysis:
         st.metric("Position", jd_analysis.get('role_type', 'N/A'))
         st.metric("Level", jd_analysis.get('seniority_level', 'N/A'))
         
-        st.subheader("✅ Required Skills")
+        st.subheader("✔️ Required Skills")
         for skill in jd_analysis.get('required_skills', [])[:10]:
             st.write(f"• {skill}")
     
@@ -160,41 +213,56 @@ if st.session_state.generated and st.session_state.jd_analysis:
             st.write(f"• {skill}")
     
     # Match Score
-    st.header("🎯 Your Match Score")
-    
+
     score = match_details['score']
-    
-    # Display score with color and metric for aesthetics
-    score_col1, score_col2 = st.columns([1, 3])
-    with score_col1:
-        if score >= 80:
-            st.success(f"#{score}%")
-        elif score >= 60:
-            st.warning(f"#{score}%")
-        else:
-            st.info(f"#{score}%")
-    with score_col2:
-        if score >= 80:
-            st.write("Excellent Match! 🎉")
-        elif score >= 60:
-            st.write("Good Match! 👍")
-        else:
-            st.write("Moderate Match – Let's improve it!")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.subheader("✅ Your Matching Skills")
-        for skill in match_details['matched_skills'][:15]:
-            st.write(f"✅ {skill}")
-    
-    with col2:
-        st.subheader("⚠️ Missing Skills")
-        if match_details['missing_skills']:
-            for skill in match_details['missing_skills'][:10]:
-                st.write(f"⚠️ {skill}")
-        else:
-            st.success("🎉 You have all required skills!")
+    # Render Match Score Card
+    match_score_text = (
+        'Excellent Match! 🎉' if score >= 80 else ('Good Match! 👍' if score >= 60 else "Moderate Match – Let's improve it!")
+    )
+    st.markdown(f"""
+    <div class='card' style='padding:2rem 1.5rem;margin-bottom:1.5rem;'>
+        <h2 style='margin-bottom:0.5rem;'>🎯 Your Match Score</h2>
+        <div style='display:flex;align-items:center;gap:1.5rem;'>
+            <div style='flex:1;'>
+                <div style='background:linear-gradient(90deg,#6366f1,#8b5cf6);height:22px;border-radius:10px;overflow:hidden;'>
+                    <div style='width:{score}%;background:#10b981;height:100%;border-radius:10px;'></div>
+                </div>
+            </div>
+            <span style='font-weight:bold;font-size:1.5rem;color:#10b981;'>{score}%</span>
+        </div>
+        <p style='margin-top:0.5rem;color:#94a3b8;font-size:1.1rem;'>
+            {match_score_text}
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Render Matching and Missing Skills Cards
+    matched_skills_html = "".join([
+        f'<li style="margin-bottom:0.4rem;color:#10b981;font-weight:500;">✔️ {skill}</li>'
+        for skill in match_details['matched_skills'][:15]
+    ])
+    if match_details['missing_skills']:
+        missing_skills_html = "<ul style='list-style:none;padding-left:0;margin:0;'>" + "".join([
+            f'<li style="margin-bottom:0.4rem;color:#ef4444;font-weight:500;">⚠️ {skill}</li>'
+            for skill in match_details['missing_skills'][:10]
+        ]) + "</ul>"
+    else:
+        missing_skills_html = '<div style="color:#10b981;font-weight:500;">🎉 You have all required skills!</div>'
+
+    st.markdown(f"""
+    <div style='display:flex;gap:2rem;flex-wrap:wrap;'>
+        <div class='card' style='flex:1;min-width:260px;padding:1.2rem;'>
+            <h3 style='margin-bottom:0.5rem;'>✔️ Your Matching Skills</h3>
+            <ul style='list-style:none;padding-left:0;margin:0;'>
+                {matched_skills_html}
+            </ul>
+        </div>
+        <div class='card' style='flex:1;min-width:260px;padding:1.2rem;'>
+            <h3 style='margin-bottom:0.5rem;'>⚠️ Missing Skills</h3>
+            {missing_skills_html}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
     # AI SKILL RECOMMENDATIONS (Interactive and Aesthetic)
     st.header("💡 AI Skill Recommendations")
@@ -389,7 +457,6 @@ if st.session_state.generated and st.session_state.jd_analysis:
         
         # Preview Section
         st.subheader("📄 Live Preview")
-        st.info("👀 This is how your resume will look:")
         
         # Show HTML preview in iframe
         import base64
@@ -444,6 +511,3 @@ if st.session_state.generated and st.session_state.jd_analysis:
         
         st.balloons()
         st.success("🎉 Your tailored resume is ready! Choose your preferred format above.")
-
-else:
-    st.info("👆 Paste a job URL or description above to get started!")
