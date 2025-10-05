@@ -497,3 +497,7 @@ with st.expander("🗑️ Clear All Data", expanded=False):
             st.rerun()
 if st.button("Add Job description", type="primary", use_container_width=True, key="generate_btn"):
     st.switch_page("pages/2_🎯_Generate_Resume.py")
+
+
+# Footer
+st.markdown("<br><br><br><br><br><br><br>", unsafe_allow_html=True)

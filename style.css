@@ -1321,4 +1321,126 @@ header {visibility: hidden;}
     box-shadow: var(--shadow-lg);
 }
 
-/* ========== END OF STYLESHEET ========== */
+/* ========== SKILLS GRID LAYOUT - Elegant & Structured ========== */
+/* Skills section container */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+}
+
+/* Individual skill items */
+.skill-item {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.skill-item::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--brand-gradient);
+    border-radius: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.skill-item:hover {
+    transform: translateX(4px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+/* For Streamlit columns with skills - better layout */
+[data-testid="column"] .stMarkdown p {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    margin: var(--space-xs) 0;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+[data-testid="column"] .stMarkdown p::before {
+    content: '✓';
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--brand-gradient);
+    border-radius: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+[data-testid="column"] .stMarkdown p:hover {
+    transform: translateX(4px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+/* Skills list bullets styling */
+[data-testid="stMarkdown"] ul li {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    margin: var(--space-xs) 0;
+    list-style: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+[data-testid="stMarkdown"] ul li::before {
+    content: '✓';
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--brand-gradient);
+    border-radius: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+[data-testid="stMarkdown"] ul li:hover {
+    transform: translateX(4px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+[data-testid="stMarkdown"] ul {
+    padding-left: 0;
+    margin: var(--space-md) 0;
+}
+

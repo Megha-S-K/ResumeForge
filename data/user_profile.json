@@ -79,8 +79,10 @@
       "javascript",
       "html",
       "css",
-      "javascript",
-      "oops concepts"
+      "langchain",
+      "MongoDB",
+      "Node.js",
+      "SQL"
     ],
     "soft": [
       "Leadership",
@@ -105,8 +107,8 @@
     {
       "name": "UI/UX",
       "issuer": "Udemy",
-      "year": "2022"
+      "year": "2025"
     }
   ],
-  "last_updated": "2025-10-04 19:54:20"
+  "last_updated": "2025-10-05 12:51:59"
 }
