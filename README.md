@@ -1,3 +1,5 @@
+🧠 ResumeForge AI:
+
 Transform your job search from hours of manual work to seconds of AI-powered automation. ResumeForge AI generates perfectly tailored, ATS-optimized resumes using cutting-edge AI technology.
 Every one of us would have faced the problem of tinkering our resume with respect to the job description of the comapany manually ,instead of preparing for our interview .. So I created this project ResumeForgeAI application to help graduates and job seekers generate a tailored resume customized to the specific JD and their profile.
 
