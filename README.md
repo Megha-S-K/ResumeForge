@@ -1,261 +1,266 @@
-🧠 ResumeForge AI:
+# 🧠 ResumeForge AI
 
-Transform your job search from hours of manual work to seconds of AI-powered automation. ResumeForge AI generates perfectly tailored, ATS-optimized resumes using cutting-edge AI technology.
-Every one of us would have faced the problem of tinkering our resume with respect to the job description of the comapany manually ,instead of preparing for our interview .. So I created this project ResumeForgeAI application to help graduates and job seekers generate a tailored resume customized to the specific JD and their profile.
+> Transform your job search from hours of manual work to seconds of **AI-powered automation.**
 
-📋 Table of Contents
+**ResumeForge AI** generates perfectly tailored, ATS-optimized resumes using cutting-edge AI technology.
 
--Overview
--Key Features
--Tech Stack
--Usage
--Project Structure
--How It Works
--AI Integration
--Acknowlegments
+Every one of us has faced the frustration of manually tweaking resumes for each company instead of focusing on interview prep.  
+This project was built to **help graduates and job seekers** instantly generate **personalized, job-specific resumes** using AI.
 
-🎯 Overview
-The Problem:
-- Job seekers spend 2-3 hours customizing resumes for each application
-- 75% of resumes are rejected by ATS (Applicant Tracking Systems) due to poor keyword matching
-- Most candidates don't know which skills or experiences to emphasize
+---
 
-The Solution:
-ResumeForge AI uses Cerebras Cloud and Meta's Llama 3 models to:
--Analyze job descriptions in seconds
--Generate tailored professional summaries
--Recommend missing critical skills
--Select relevant projects and experiences
--Produce ATS-optimized, professionally designed resumes
+## 📋 Table of Contents
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [How It Works](#-how-it-works)
+- [AI Integration](#-ai-integration)
+- [Design Philosophy](#-design-philosophy)
+- [Acknowledgments](#-acknowledgments)
 
-The Result:
-- 30 seconds instead of 2-3 hours per application
-- 75-90% ATS match scores (vs 40-50% for generic resumes)
-- Beautiful, one-page professional resumes ready for top MNC companies
+---
 
+## 🎯 Overview
 
-✨ Key Features
-🤖 AI-Powered Intelligence
+### ❌ The Problem
+- Job seekers spend **2–3 hours** customizing resumes for each job.
+- **75% of resumes** are rejected by ATS (Applicant Tracking Systems) due to poor keyword matching.
+- Many candidates don’t know **which skills or experiences** to emphasize.
 
-Smart Job Analysis: Automatically extracts requirements, skills, and keywords from any job posting URL
-Skill Recommendations: AI suggests critical missing skills to improve your ATS score
-Context-Aware Generation: Tailors every section based on target role
-Relevance Scoring: Intelligently selects your most impactful projects and experiences
+### ✅ The Solution
+**ResumeForge AI** uses **Cerebras Cloud** and **Meta’s Llama 3** models to:
+- Analyze job descriptions in seconds  
+- Generate tailored professional summaries  
+- Recommend missing critical skills  
+- Select the most relevant projects and experiences  
+- Produce ATS-optimized, visually appealing resumes  
 
-📝 Professional Resume Building
+### ⚡ The Result
+- **30 seconds** instead of 2–3 hours per resume  
+- **75–90% ATS match score** (vs 40–50% for generic resumes)  
+- **Beautiful, one-page** professional resumes ready for top MNCs  
 
-One-Time Profile Setup: Enter your information once, use it forever
-Auto-Save: Never lose your progress
-Edit & Delete: Full CRUD operations on all profile sections
-Dynamic Sections: Empty sections automatically hidden (e.g., no "Work Experience" for freshers)
+---
 
-🎨 Beautiful Output
+## ✨ Key Features
 
-Modern Design: Professional sidebar layout with gradient accents
-ATS-Friendly: Optimized formatting that passes automated screening
-Live Preview: See your resume before downloading
-Multiple Formats: Download as PDF (beautiful) or DOCX (ATS-compatible)
-One-Page Optimization: Intelligent content prioritization for single-page perfection
+### 🤖 AI-Powered Intelligence
+- **Smart Job Analysis** – Extracts skills and keywords from job postings.  
+- **Skill Recommendations** – Suggests missing skills to improve your ATS score.  
+- **Context-Aware Generation** – Customizes each section based on job context.  
+- **Relevance Scoring** – Picks the most impactful projects and experiences.
 
-⚡ Lightning Fast
+### 📝 Professional Resume Builder
+- **One-Time Profile Setup** – Enter once, reuse forever.  
+- **Auto-Save** – All inputs saved automatically.  
+- **CRUD Operations** – Edit or delete any section easily.  
+- **Dynamic Sections** – Hides empty fields (e.g., no “Work Experience” for freshers).
 
-5-7 Second Generation: Powered by Cerebras Cloud (1000x faster than traditional GPUs)
-Real-Time Updates: Instant skill additions and regeneration
-Smooth UX: No frustrating loading screens
+### 🎨 Beautiful Output
+- **Modern Design** – Professional sidebar layout with gradient styling.  
+- **ATS-Friendly Format** – Passes screening bots effortlessly.  
+- **Live Preview** – View your resume before downloading.  
+- **Multiple Formats** – Export as **PDF** or **DOCX**.  
+- **One-Page Optimization** – AI intelligently shortens and formats content.
 
+### ⚡ Lightning Fast
+- **5–7 seconds** per generation using **Cerebras Cloud** (1000× faster than GPUs).  
+- **Real-Time Updates** – Immediate skill edits and regeneration.  
+- **Smooth UX** – No lag, no load screens.
 
-🛠️ Tech Stack
-Frontend :
-Streamlit - Modern Python web framework for rapid UI development
-Custom CSS - Glassmorphic dark theme with responsive design
-HTML/CSS - Professional resume templates
+---
 
-Backend:
-Python 3.10+ - Core application logic
-Cerebras Cloud SDK - Ultra-fast AI inference
-Meta Llama 3.1 (8B & 70B models) - Natural language processing and generation
+## 🛠️ Tech Stack
 
-AI & Processing:
-Trafilatura - Web scraping for job description extraction
-BeautifulSoup4 - HTML parsing
-Pdfkit - PDF generation from HTML
-python-docx - DOCX document generation
+### 🎨 Frontend
+- **Streamlit** – Modern Python web framework  
+- **Custom CSS** – Glassmorphic dark theme with responsive design  
+- **HTML/CSS** – Professionally formatted resume templates  
 
-Data & Storage:
-JSON - Local data storage for user profiles
-python-dotenv - Environment variable management
+### ⚙️ Backend
+- **Python 3.10+** – Core logic and orchestration  
+- **Cerebras Cloud SDK** – Ultra-fast AI inference  
+- **Meta Llama 3.1 (8B & 70B)** – Natural language understanding and generation  
 
-📖 Usage
-1. Build Your Profile
-Navigate to 📝 Profile Builder:
+### 🧠 AI & Processing
+- **Trafilatura** – Extracts job text from URLs  
+- **BeautifulSoup4** – HTML parsing  
+- **pdfkit / WeasyPrint** – PDF generation  
+- **python-docx** – DOCX creation  
 
-Enter personal information (name, email, phone, LinkedIn)
-Add work experience (if applicable)
-Add projects with descriptions and tech stacks
-List technical and soft skills
-Add education details
-Add certifications (optional)
+### 💾 Data & Storage
+- **JSON** – Local user profile storage  
+- **python-dotenv** – Environment management  
 
-Note: All data is automatically saved as you type!
-2. Generate Tailored Resume
-Navigate to 🎯 Generate Resume:
+---
 
-Paste a job posting URL (LinkedIn, Indeed, company website)
-OR paste the job description text directly
-Click Generate Resume
+## 📖 Usage
 
-3. Review AI Analysis
-The system will show:
+### 1️⃣ Build Your Profile
+Go to **📝 Profile Builder**  
+- Enter personal info (name, email, phone, LinkedIn)  
+- Add work experience and projects  
+- List technical and soft skills  
+- Add education and certifications  
 
-Match score (percentage)
-Matching skills (what you have)
-Missing skills (what the job requires)
-AI-recommended skills
+🪄 *All data saves automatically as you type!*
 
-4. Add Recommended Skills
+---
 
-Select skills you actually have from recommendations
-Click Update Profile & Regenerate
-Watch your ATS score improve!
+### 2️⃣ Generate a Tailored Resume
+Go to **🎯 Generate Resume**  
+- Paste a job posting **URL** or **job description text**  
+- Click **Generate Resume**
 
-5. Download Your Resume
+---
 
-Preview the beautiful resume in browser
-Download as PDF (professional design) or DOCX (ATS-compatible)
-Apply to jobs with confidence!
+### 3️⃣ Review AI Analysis
+View AI-powered insights:
+- ✅ Match Score (0–100%)  
+- 🧩 Matching Skills  
+- ⚠️ Missing Skills  
+- 💡 AI-Recommended Additions  
 
+---
 
-📁 Project Structure
+### 4️⃣ Improve Your Resume
+- Add recommended skills you actually have  
+- Click **Update Profile & Regenerate**  
+- Watch your **ATS score** increase!
+
+---
+
+### 5️⃣ Download
+- Preview in browser  
+- Download as **PDF (professional)** or **DOCX (ATS-ready)**  
+- Apply confidently to your dream jobs!
+
+---
+
+## 📁 Project Structure
+
+```bash
 resume-forge-ai/
 │
-├── app.py                          # Main Streamlit application
+├── app.py                     # Main Streamlit app
 │
-├── pages/                          # Multi-page app
-│   ├── 1_📝_Profile_Builder.py    # Profile creation and editing
+├── pages/
+│   ├── 1_📝_Profile_Builder.py   # Profile creation page
 │   └── 2_🎯_Generate_Resume.py    # Resume generation interface
 │
-├── utils/                          # Helper modules
+├── utils/
 │   ├── __init__.py
-│   ├── profile_manager.py         # Save/load user profiles
-│   ├── url_extractor.py           # Extract job descriptions from URLs
-│   ├── ai_analyzer.py             # Cerebras API integration
-│   ├── html_resume_builder.py     # HTML resume template
-│   └── docx_builder.py            # DOCX resume generation
+│   ├── profile_manager.py      # Save/load profiles
+│   ├── url_extractor.py        # Extract JD from URLs
+│   ├── ai_analyzer.py          # Cerebras + Llama logic
+│   ├── html_resume_builder.py  # HTML resume template
+│   └── docx_builder.py         # DOCX generation
 │
-├── data/                           # Local data storage
-│   └── user_profile.json          # User profile data
+├── data/
+│   └── user_profile.json       # Local storage
 │
-├── .streamlit/                     # Streamlit configuration
-│   ├── config.toml                # Theme settings
-│   └── style.css                  # Custom CSS styling
+├── .streamlit/
+│   ├── config.toml             # Theme configuration
+│   └── style.css               # Custom CSS
 │
-├── requirements.txt                # Python dependencies
-├── Dockerfile                      # Docker container config
-├── .env.example                    # Environment variables template
+├── requirements.txt            # Python dependencies
+├── Dockerfile                  # Container config
+├── .env.example                # Environment template
 ├── .gitignore
-└── README.md                       # This file
+└── README.md                   # Documentation
+```
 
-🧠 How It Works
-Step-by-Step Process
+---
 
-Job Analysis
+## 🧩 How It Works
 
-User pastes job URL or description
-Trafilatura extracts clean text from URL
-Llama 3.1-8B analyzes and extracts:
+### 1️⃣ Job Analysis
+- User pastes job URL or text.
+- Trafilatura cleans and extracts text.
+- Llama 3.1 (8B) identifies:
+  - Required & optional skills
+  -Role type & seniority
+  -Key responsibilities
+  -ATS keywords
 
-Required technical skills
-Nice-to-have skills
-Role type and seniority level
-Key responsibilities
-ATS keywords
+### 2️⃣ Profile Matching
+- Compares user data with job requirements
+- Calculates Match Score (0–100%)
+- Highlights skill gaps and recommends improvements
 
+### 3️⃣ Content Selection
+- AI ranks projects by relevance
+- Picks top 3 projects
+- Optimizes bullet points with job keywords
+- Reorders skills and experience intelligently
 
+### 4️⃣ Resume Generation
+- AI drafts a tailored summary
+- html_resume_builder.py renders modern layout
+- pdfkit → PDF
+- python-docx → ATS-friendly DOCX
 
+### 5️⃣ Output
+- Live preview in Streamlit
+- Download options: PDF / DOCX
+- Quick iteration supported
 
-Profile Matching
+---
 
-System compares user skills with job requirements
-Calculates match score (0-100%)
-Identifies skill gaps
-Generates AI-powered recommendations
+## 🤖 AI Integration
+⚡ Cerebras Cloud + Meta Llama 3.1
 
+### Why Cerebras?
+🚀 1000× faster inference
+⚡ 5–7 sec processing (vs 30+ sec standard)
+🔒 Stable performance under heavy load
+💸 Free tier for dev & MVP testing
 
-Content Selection
+#### Llama 3.1 Used For:
 
-AI scores each project for relevance
-Selects top 3 most relevant projects
-Prioritizes experience bullets with job keywords
-Reorders skills (matching first)
+- Job description analysis
+- Summary & keyword generation
+- Skill recommendation
+- Project relevance scoring
 
+---
 
-Resume Generation
+## 🎨 Design Philosophy
 
-Llama 3.1-8B generates tailored professional summary
-System builds HTML resume with modern template
-Optimizes content for one-page layout
-WeasyPrint converts to PDF
-python-docx creates ATS-friendly DOCX
+### 🧭 User Experience Principles
 
+Speed First: Instant interactions
+Smart Defaults: Minimal typing, maximum AI help
+Visual Feedback: Clear process visibility
+Progressive Disclosure: Simplicity first, depth later
+Error Recovery: Smooth fallback for failed API calls
 
-Output
+### 🧾 Resume Design Principles
 
-Live preview in browser
-Download options (PDF/DOCX)
-User can iterate and regenerate instantly
+ATS-Friendly: Clean, parseable structure
+One Page: Prioritized content
+Professional: Modern, balanced visuals
+Scannable: Recruiter-friendly layout
+Dynamic: Hide unused sections automatically
 
+---
 
+## 🙏 Acknowledgments
+###🏆 Built For
 
-
-🤖 AI Integration
-Cerebras Cloud + Llama 3.1
-Why Cerebras?
-
-1000x faster inference than traditional GPUs
-5-7 second total processing time (vs 25-45 seconds with standard inference)
-Consistent performance under load
-Free tier for development and MVP testing
-
-Llama 3.1 Model Used for:
--Job analysis
--Summary generation
--Skill recommendations
--Project scoring
-
-🎨 Design Philosophy
-User Experience Principles
-
-Speed First: Every interaction should feel instant
-Smart Defaults: Minimize user input, maximize AI assistance
-Visual Feedback: Users always know what's happening
-Progressive Disclosure: Show complexity only when needed
-Error Recovery: Graceful fallbacks if AI fails
-
-Resume Design Principles
-
-ATS-Friendly: Clean structure parseable by automated systems
-One Page: Strict content prioritization
-Professional: Modern but not flashy
-Scannable: Easy for recruiters to skim
-No Empty Sections: Dynamic hiding of unused sections
-
-🙏 Acknowledgments
-Built For
 FutureStack 2025 Hackathon
 
-Sponsored by Cerebras, Meta, Docker, and WeMakeDevs
+### 🧰 Technologies
+Cerebras Cloud – Lightning-fast AI inference
+Meta Llama 3.1 – Natural language processing
+Streamlit – Rapid web app development
+Open Source Libraries – Trafilatura, BeautifulSoup, Pdfkit, etc.
 
-Technologies
+### 💖 Special Thanks
+Cerebras Team – Free cloud compute access
+Meta AI – For open-sourcing Llama models
+WeMakeDevs – For organizing the hackathon
 
-Cerebras Cloud - For blazing-fast AI inference
-Meta Llama 3.1 - For powerful language understanding
-Streamlit - For rapid UI development
-Docker - For containerization
-Open Source Community - For amazing libraries
-
-Special Thanks
-
-Cerebras team for providing free cloud access
-Meta for open-sourcing Llama models
-WeMakeDevs for organizing the hackathon
-All contributors and testers
+---
