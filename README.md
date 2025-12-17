@@ -18,7 +18,6 @@ This project was built to **help graduates and job seekers** instantly generate 
 - [How It Works](#-how-it-works)
 - [AI Integration](#-ai-integration)
 - [Design Philosophy](#-design-philosophy)
-- [Acknowledgments](#-acknowledgments)
 
 ---
 
@@ -247,20 +246,4 @@ Dynamic: Hide unused sections automatically
 
 ---
 
-## 🙏 Acknowledgments
-###🏆 Built For
-
-FutureStack 2025 Hackathon
-
-### 🧰 Technologies
-Cerebras Cloud – Lightning-fast AI inference
-Meta Llama 3.1 – Natural language processing
-Streamlit – Rapid web app development
-Open Source Libraries – Trafilatura, BeautifulSoup, Pdfkit, etc.
-
-### 💖 Special Thanks
-Cerebras Team – Free cloud compute access
-Meta AI – For open-sourcing Llama models
-WeMakeDevs – For organizing the hackathon
-
----
+##### Demo video : https://youtu.be/0rACAOkFXTQ?si=SRI_YMM9ZI_iTdrI
